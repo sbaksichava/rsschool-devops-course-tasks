@@ -13,8 +13,8 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# Пример ресурса S3
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = "my-unique-bucket-name"
+  bucket = "my-terrafo
+  rm-sb" 
   acl    = "private"
 }
