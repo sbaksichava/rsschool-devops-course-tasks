@@ -14,6 +14,6 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = "my-terraform-sb" 
+  bucket = "my-terraform-sb"
   acl    = "private"
 }
