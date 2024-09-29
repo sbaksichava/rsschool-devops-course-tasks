@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+      - first_task
   pull_request:
     branches:
       - main
+      - first_task
 
 jobs:
   terraform-check:
