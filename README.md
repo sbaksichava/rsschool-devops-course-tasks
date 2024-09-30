@@ -1,48 +1,26 @@
-# Terraform Infrastructure Setup
+# Task 1: AWS Account Configuration
 
-## Steps
+## What was done (90 points)
 
-- **Installed AWS CLI and Terraform**
+- **MFA User configured (10 points)**
+<img width="1431" alt="MFA User configured" src="https://github.com/user-attachments/assets/4d50ab84-e22c-4457-af4e-32ddf7347957">
+<img width="1440" alt="MFA User configured-2" src="https://github.com/user-attachments/assets/f154ae89-08cc-4b34-9a49-2a6b2fc0098a">
+<img width="1430" alt="MFA User configured-3" src="https://github.com/user-attachments/assets/af8b75b8-3b7e-4ec6-b7f4-0f31cf268add">
 
-  - Followed the instructions to install AWS CLI 2.
-  - Followed the instructions to install Terraform 1.6+.
 
-- **Created IAM User and Configured MFA**
+- **Bucket and GithubActionsRole IAM role configured (30 points)**
+<img width="1438" alt="Bucket" src="https://github.com/user-attachments/assets/fe37a1f6-d9d7-4dd0-acae-8f808ad8ca68">
+<img width="1432" alt="IAM role" src="https://github.com/user-attachments/assets/cb797e3a-a28b-4c82-bfc2-e2e7d75fdd77">
+<img width="1331" alt="IAM role 2" src="https://github.com/user-attachments/assets/36002951-da8b-4b29-9155-1b57deb6a5c2">
 
-  - In AWS IAM, created a new user with the following policies attached:
-    - AmazonEC2FullAccess
-    - AmazonRoute53FullAccess
-    - AmazonS3FullAccess
-    - IAMFullAccess
-    - AmazonVPCFullAccess
-    - AmazonSQSFullAccess
-    - AmazonEventBridgeFullAccess
-  - Configured MFA for both the new user and the root user.
-  - Generated a new pair of Access Key ID and Secret Access Key for the user.
+- **Github Actions workflow is created (30 points)**
+Workflow includes all jobs
+<img width="1431" alt="Screenshot 2024-09-30 at 21 36 43" src="https://github.com/user-attachments/assets/69c60cb9-d941-4589-a69b-9cfadf72a15e">
 
-- **Configured AWS CLI**
+- **Verification (10 points)**
+Terraform plan is executed successfully for GithubActionsRole
+Terraform plan is executed successfully for a terraform state bucket
+- **Additional Tasks (10 points)**
+Document the infrastructure setup and usage in a README file.
+A GitHub Actions (GHA) pipeline is passing
 
-  - Configured AWS CLI to use the new user's credentials.
-  - Verified the configuration by running the command: `aws ec2 describe-instance-types --instance-types t4g.nano`.
-
-- **Created a GitHub Repository for Terraform Code**
-
-  - Created a repository `rsschool-devops-course-tasks`.
-
-- **Created a Bucket for Terraform States**
-
-  - Managed Terraform states following best practices with S3 as backend.
-
-- **Created an IAM Role for GitHub Actions**
-
-  - Created an IAM role `GithubActionsRole` with the same permissions as in step 2.
-
-- **Configured Identity Provider and Trust Policies for GitHub Actions**
-
-  - Updated the `GithubActionsRole` IAM role with Trust policy according to AWS guidelines.
-
-- **Created a GitHub Actions Workflow for Deployment via Terraform**
-  - Implemented a workflow with three jobs:
-    - `terraform-check` for format checking with `terraform fmt`
-    - `terraform-plan` for planning deployments with `terraform plan`
-    - `terraform-apply` for deploying with `terraform apply`
